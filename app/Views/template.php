@@ -213,7 +213,7 @@
             <!-- partial -->
 
             <div class="page-content">
-
+                <?= $this->renderSection('content') ;?>
             </div>
 
             <!-- partial:../../partials/_footer.html -->
