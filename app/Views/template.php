@@ -65,7 +65,7 @@
                             <span class="link-title">Barang</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse show" id="barang">
+                        <div class="collapse <?= in_array('barang', $segment) ? 'show' : '' ?>" id="barang">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
                                     <a href="<?= base_url('/barang') ?>" class="nav-link <?= end($segment) == 'barang' ? 'active' : '' ?>">Data Barang</a>
