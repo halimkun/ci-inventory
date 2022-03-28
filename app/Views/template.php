@@ -19,6 +19,8 @@
     <!-- endinject -->
 
     <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="<?= base_url() ?>/styles/vendors/simplemde/simplemde.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/styles/vendors/select2/select2.min.css">
     <!-- End plugin css for this page -->
 
     <!-- inject:css -->
@@ -39,7 +41,7 @@
         <nav class="sidebar">
             <div class="sidebar-header">
                 <a href="#" class="sidebar-brand">
-                    Noble<span>UI</span>
+                    UMPP
                 </a>
                 <div class="sidebar-toggler not-active">
                     <span></span>
@@ -57,33 +59,33 @@
                         </a>
                     </li>
                     <li class="nav-item nav-category">Inventory</li>
-                    <li class="nav-item">
+                    <li class="nav-item <?= in_array('barang', $segment) ? 'active' : '' ?>">
                         <a class="nav-link" data-bs-toggle="collapse" href="#barang" role="button" aria-expanded="false" aria-controls="barang">
                             <i class="link-icon" data-feather="box"></i>
                             <span class="link-title">Barang</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="barang">
+                        <div class="collapse show" id="barang">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="<?= base_url('/barang') ?>" class="nav-link">Data Barang</a>
+                                    <a href="<?= base_url('/barang') ?>" class="nav-link <?= end($segment) == 'barang' ? 'active' : '' ?>">Data Barang</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('/barang/add') ?>" class="nav-link">Penambahan</a>
+                                    <a href="<?= base_url('/barang/add') ?>" class="nav-link <?= end($segment) == 'add' ? 'active' : '' ?>"><i class="me-2 icon-md" data-feather="plus-circle"></i> Stok</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url('/barang/min') ?>" class="nav-link">Pengurangan</a>
+                                    <a href="<?= base_url('/barang/min') ?>" class="nav-link <?= end($segment) == 'min' ? 'active' : '' ?>"><i class="me-2 icon-md" data-feather="minus-circle"></i> Stok</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?= in_array('notification', $segment) ? 'active' : '' ?>">
                         <a href="<?= base_url('/notification') ?>" class="nav-link">
                             <i class="link-icon" data-feather="bell"></i>
                             <span class="link-title">Notifikasi</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?= in_array('activity', $segment) ? 'active' : '' ?>">
                         <a href="<?= base_url('/activity') ?>" class="nav-link">
                             <i class="link-icon" data-feather="activity"></i>
                             <span class="link-title">Aktifitas</span>
@@ -213,7 +215,7 @@
             <!-- partial -->
 
             <div class="page-content">
-                <?= $this->renderSection('content') ;?>
+                <?= $this->renderSection('content'); ?>
             </div>
 
             <!-- partial:../../partials/_footer.html -->
@@ -231,6 +233,8 @@
     <!-- endinject -->
 
     <!-- Plugin js for this page -->
+    <script src="<?= base_url() ?>/styles/vendors/simplemde/simplemde.min.js"></script>
+    <script src="<?= base_url() ?>/styles/vendors/select2/select2.min.js"></script>
     <!-- End plugin js for this page -->
 
     <!-- inject:js -->
@@ -239,6 +243,8 @@
     <!-- endinject -->
 
     <!-- Custom js for this page -->
+    <script src="<?= base_url() ?>/styles/js/simplemde.js"></script>
+    <script src="<?= base_url() ?>/styles/js/select2.js"></script>
     <!-- End custom js for this page -->
 </body>
 
