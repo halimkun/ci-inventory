@@ -22,30 +22,35 @@ class AktifitasMigrate extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'jumlah' => [
+                'type'       => 'INT',
+            ],
+            'stok_sebelumnya' => [
+                'type'       => 'INT',
+            ],
             'oleh'        => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'keterangan' => [
-                'type'       => 'TEXT',
-            ],
             'created_at'  => [
-                'type'       => 'DATETIME',
-                'null'       => true,
+                'type' => 'DATETIME',
+                'null' => true,
             ],
             'updated_at'  => [
-                'type'       => 'DATETIME',
-                'null'       => true,
+                'type' => 'DATETIME',
+                'null' => true,
             ],
             'deleted_at'  => [
-                'type'       => 'DATETIME',
-                'null'       => true,
+                'type' => 'DATETIME',
+                'null' => true,
             ],
         ]);
+        $this->forge->addKey('id', TRUE);
+        $this->forge->createTable('aktivitas', true);
     }
 
     public function down()
     {
-        //
+        $this->forge->dropTable('aktivitas', TRUE);
     }
 }
