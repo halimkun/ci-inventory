@@ -7,10 +7,12 @@ use App\Controllers\BaseController;
 class Barang extends BaseController
 {
     protected $barang;
+    protected $aktivitas;
 
     public function __construct()
     {
         $this->barang = new \App\Models\BarangModel();
+        $this->aktivitas = new \App\Models\AktivitasModel();
     }
 
     public function index()
@@ -33,15 +35,24 @@ class Barang extends BaseController
         return view("barang/add", [
             'segment' => $this->request->uri->getSegments(),
             'barang' => $this->barang->findAll(),
+            'aktivitas' => $this->aktivitas->where('type', 'add')->findAll(),
             'item' => $item
         ]);
     }
 
     public function min()
     {
+        if (isset($_GET['item'])) {
+            $item = $_GET['item'];
+        } else {
+            $item = '';
+        }
+
         return view("barang/min", [
             'segment' => $this->request->uri->getSegments(),
-            'barang' => $this->barang->findAll()
+            'barang' => $this->barang->findAll(),
+            'aktivitas' => $this->aktivitas->where('type', 'min')->findAll(),
+            'item' => $item
         ]);
     }
 
@@ -71,14 +82,18 @@ class Barang extends BaseController
     public function add_stok()
     {
         $old = $this->barang->where("id", $this->request->getPost('barang'))->findAll();
+        $new = $old[0]->stok + $this->request->getPost('stok');
 
         $data = [
             'id' => $this->request->getPost('barang'),
-            'stok' => $old[0]->stok += $this->request->getPost('stok')
+            'stok' => $new
         ];
 
         if (count($old) > 0) {
             if ($this->barang->save($data)) {
+                // ? apakah keterangan diperlukan ?
+                simpanAktifitas('add', $old[0]->nama, $this->request->getPost('stok'), $old[0]->stok);
+                
                 session()->setFlashdata("success", "Berhasil menambahkan stok barang");
                 return redirect()->to("/barang/add");
             } else {
@@ -102,6 +117,8 @@ class Barang extends BaseController
 
         if (count($old) > 0) {
             if ($this->barang->save($data)) {
+                simpanAktifitas('min', $old[0]->nama, $this->request->getPost('stok'), $old[0]->stok);
+
                 session()->setFlashdata("success", "Berhasil menambahkan stok barang");
                 return redirect()->to("/barang/min");
             } else {
