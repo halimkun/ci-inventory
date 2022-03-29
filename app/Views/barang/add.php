@@ -1,7 +1,7 @@
 <?= $this->extend('template'); ?>
 <?= $this->section('content'); ?>
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
         <div class="card card-body">
             <div class="card-title mb-3">
                 Tambah Stok Barang
@@ -43,21 +43,35 @@
             </form>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="card card-body">
             <div class="card-title mb-3">
                 Log Penambahan Stok Barang
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>tgl</th>
-                        <th>oleh</th>
-                        <th>item</th>
-                        <th>jumlah</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>tgl</th>
+                            <th>item</th>
+                            <th>jumlah</th>
+                            <th>stok sebelumnya</th>
+                            <th>oleh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($aktivitas as $a) : ?>
+                            <tr>
+                                <td><?= str_replace(' ', '</br>', $a->created_at) ?></td>
+                                <td><?= $a->barang ?></td>
+                                <td><?= $a->jumlah ?></td>
+                                <td><?= $a->stok_sebelumnya ?></td>
+                                <td><?= $a->oleh ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
