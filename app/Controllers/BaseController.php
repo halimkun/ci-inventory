@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Controllers;
+date_default_timezone_set('Asia/Jakarta');
 
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
@@ -35,7 +35,7 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['aktifitas'];
 
     /**
      * Constructor.
@@ -48,5 +48,6 @@ class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+        session();
     }
 }
