@@ -14,7 +14,7 @@ class AktivitasModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['type', 'barang', 'jumlah', 'stok_sebelumnya', 'oleh'];
+    protected $allowedFields    = ['type', 'barang', 'jumlah', 'stok_sebelumnya', 'oleh', 'acessor'];
 
     // Dates
     protected $useTimestamps = true;

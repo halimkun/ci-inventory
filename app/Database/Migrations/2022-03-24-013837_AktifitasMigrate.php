@@ -23,14 +23,19 @@ class AktifitasMigrate extends Migration
                 'constraint' => '100',
             ],
             'jumlah' => [
-                'type'       => 'INT',
+                'type' => 'INT',
             ],
             'stok_sebelumnya' => [
-                'type'       => 'INT',
+                'type' => 'INT',
             ],
             'oleh'        => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
+            ],
+            'acessor'        => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+                'null'       => true
             ],
             'created_at'  => [
                 'type' => 'DATETIME',

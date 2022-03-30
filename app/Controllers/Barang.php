@@ -70,6 +70,8 @@ class Barang extends BaseController
             return redirect()->to("/barang");
         } else {
             if ($this->barang->save($data)) {
+                simpanAktifitas('new', $data['nama'], $this->request->getPost('jumlah'), 0, null);
+
                 session()->setFlashdata("success", "Data barang berhasil ditambahkan");
                 return redirect()->to("/barang");
             } else {
@@ -92,7 +94,7 @@ class Barang extends BaseController
         if (count($old) > 0) {
             if ($this->barang->save($data)) {
                 // ? apakah keterangan diperlukan ?
-                simpanAktifitas('add', $old[0]->nama, $this->request->getPost('stok'), $old[0]->stok);
+                simpanAktifitas('add', $old[0]->nama, $this->request->getPost('stok'), $old[0]->stok, null);
                 
                 session()->setFlashdata("success", "Berhasil menambahkan stok barang");
                 return redirect()->to("/barang/add");
@@ -117,7 +119,7 @@ class Barang extends BaseController
 
         if (count($old) > 0) {
             if ($this->barang->save($data)) {
-                simpanAktifitas('min', $old[0]->nama, $this->request->getPost('stok'), $old[0]->stok);
+                simpanAktifitas('min', $old[0]->nama, $this->request->getPost('stok'), $old[0]->stok, null);
 
                 session()->setFlashdata("success", "Berhasil menambahkan stok barang");
                 return redirect()->to("/barang/min");
