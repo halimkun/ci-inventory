@@ -34,12 +34,12 @@ class Auth extends \Myth\Auth\Config\Auth
 	 * @var array
 	 */
 	public $views = [
-		'login'		   => 'App\Views\login',
-		'register'		=> 'App\Views\register',
-		'forgot'		  => 'App\Views\forgot',
-		'reset'		   => 'App\Views\reset',
-		'emailForgot'	 => 'App\Views\emails\forgot',
-		'emailActivation' => 'App\Views\emails\activation',
+		'login'           => 'App\Views\Auth\login',
+		'register'        => 'App\Views\Auth\register',
+		'forgot'          => 'App\Views\Auth\forgot',
+		'reset'           => 'App\Views\Auth\reset',
+		'emailForgot'     => 'App\Views\Auth\emails\forgot',
+		'emailActivation' => 'App\Views\Auth\emails\activation',
 	];
 
 	/**
@@ -49,7 +49,7 @@ class Auth extends \Myth\Auth\Config\Auth
 	 *
 	 * @var string
 	 */
-	public $viewLayout = 'App\Views\layout';
+	public $viewLayout = 'App\Views\Auth\layout';
 
 	/**
 	 * --------------------------------------------------------------------
@@ -146,7 +146,8 @@ class Auth extends \Myth\Auth\Config\Auth
 	 *
 	 * @var string|null Name of the ActivatorInterface class
 	 */
-	public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
+	// public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
+	public $requireActivation = null;
 
 	/**
 	 * --------------------------------------------------------------------
@@ -158,7 +159,8 @@ class Auth extends \Myth\Auth\Config\Auth
 	 *
 	 * @var string|null Name of the ResetterInterface class
 	 */
-	public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
+	// public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
+	public $activeResetter = null;
 
 	/**
 	 * --------------------------------------------------------------------

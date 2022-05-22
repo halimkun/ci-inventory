@@ -58,6 +58,12 @@
                             <span class="link-title">Dashboard</span>
                         </a>
                     </li>
+                    <li class="nav-item <?= in_array('notification', $segment) ? 'active' : '' ?>">
+                        <a href="<?= base_url('/notification') ?>" class="nav-link">
+                            <i class="link-icon" data-feather="bell"></i>
+                            <span class="link-title">Notifikasi</span>
+                        </a>
+                    </li>
                     <li class="nav-item nav-category">Inventory</li>
                     <li class="nav-item <?= in_array('barang', $segment) ? 'active' : '' ?>">
                         <a class="nav-link" data-bs-toggle="collapse" href="#barang" role="button" aria-expanded="false" aria-controls="barang">
@@ -79,16 +85,17 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item <?= in_array('notification', $segment) ? 'active' : '' ?>">
-                        <a href="<?= base_url('/notification') ?>" class="nav-link">
-                            <i class="link-icon" data-feather="bell"></i>
-                            <span class="link-title">Notifikasi</span>
-                        </a>
-                    </li>
                     <li class="nav-item <?= in_array('activity', $segment) ? 'active' : '' ?>">
                         <a href="<?= base_url('/activity') ?>" class="nav-link">
                             <i class="link-icon" data-feather="activity"></i>
-                            <span class="link-title">Aktifitas</span>
+                            <span class="link-title">Log Aktifitas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">User</li>
+                    <li class="nav-item <?= in_array('user', $segment) ? 'active' : '' ?>">
+                        <a href="<?= base_url('/user') ?>" class="nav-link">
+                            <i class="link-icon" data-feather="user-check"></i>
+                            <span class="link-title">User</span>
                         </a>
                     </li>
                 </ul>
@@ -167,22 +174,23 @@
                                 </div>
                             </div>
                         </li>
+                        <?php $ava = avatarGen(user()->username) ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="profile">
+                                <img class="wd-30 ht-30 rounded-circle" src="<?= $ava ?>" alt="profile">
                             </a>
                             <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                                 <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
                                     <div class="mb-3">
-                                        <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
+                                        <img class="wd-80 ht-80 rounded-circle" src="<?= $ava ?>" alt="">
                                     </div>
                                     <div class="text-center">
-                                        <p class="tx-16 fw-bolder">Amiah Burton</p>
-                                        <p class="tx-12 text-muted">amiahburton@gmail.com</p>
+                                        <p class="tx-16 fw-bolder"><?= user()->username ?></p>
+                                        <p class="tx-12 text-muted"><?= user()->email ?></p>
                                     </div>
                                 </div>
                                 <ul class="list-unstyled p-1">
-                                    <li class="dropdown-item py-2">
+                                    <!-- <li class="dropdown-item py-2">
                                         <a href="../../pages/general/profile.html" class="text-body ms-0">
                                             <i class="me-2 icon-md" data-feather="user"></i>
                                             <span>Profile</span>
@@ -199,9 +207,9 @@
                                             <i class="me-2 icon-md" data-feather="repeat"></i>
                                             <span>Switch User</span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li class="dropdown-item py-2">
-                                        <a href="javascript:;" class="text-body ms-0">
+                                        <a href="/logout" class="text-body ms-0">
                                             <i class="me-2 icon-md" data-feather="log-out"></i>
                                             <span>Log Out</span>
                                         </a>

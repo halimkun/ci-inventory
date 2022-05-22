@@ -10,7 +10,7 @@ function simpanAktifitas($type, $barang, $jumlah, $stok_lama, $acessor)
         'barang'          => $barang,
         'jumlah'          => $jumlah,
         'stok_sebelumnya' => $stok_lama,
-        'oleh'            => 'username',
+        'oleh'            => user()->username,
         'acessor'         => $acessor
     ];
     $aktifitas->save($data);
